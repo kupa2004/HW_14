@@ -44,7 +44,8 @@ resource "google_compute_instance" "default" {
       "startup-script" = <<EOT
   #!/bin/bash
   apt-get update
-
+  apt-get install -y nginx
+  systemctl enable nginx
   # USE 1 version OR 2 version
   #1 version
   apt-get install -y git
@@ -54,8 +55,6 @@ resource "google_compute_instance" "default" {
   cp /home/HW_14/index.html /var/www/html/index.html
 
 #-----------------------------------
-  apt-get install -y nginx
-  systemctl enable nginx
   systemctl restart nginx
 #-----------------------------------
  #2 version
