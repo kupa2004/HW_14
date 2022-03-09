@@ -7,14 +7,16 @@ terraform {
   }
 }
 
-#export GOOGLE_CLOUD_KEYFILE_JSON="cred-gcp.json"
-
 provider "google" {
   # Configuration options
   credentials = file("cred.json")
   project = "solar-semiotics-343520"
   region  = "us-west1"
   zone    = "us-west1-b"
+}
+
+output "gcp_instance_ip" {
+  value = google_compute_instance.default.network_interface[0].access_config[0].nat_ip
 }
 
 resource "google_compute_instance" "default" {
@@ -81,5 +83,4 @@ resource "google_compute_instance" "default" {
   EOF
   EOT
     }
-
 }
