@@ -45,6 +45,8 @@ resource "google_compute_instance" "default" {
   #!/bin/bash
   apt-get update
   apt-get install -y nginx
+  systemctl enable nginx
+  systemctl restart nginx
  cat <<EOF > /var/www/html/index.html
  <!DOCTYPE html>
  <html>
@@ -56,8 +58,6 @@ resource "google_compute_instance" "default" {
  </body>
  </html>
  EOF
-  systemctl enable nginx
-  systemctl restart nginx
   EOT
     }
 }
