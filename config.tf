@@ -7,6 +7,8 @@ terraform {
   }
 }
 
+export GOOGLE_CLOUD_KEYFILE_JSON="cred-gcp.json"
+
 provider "google" {
   # Configuration options
   credentials = file("cred-gcp.json")
