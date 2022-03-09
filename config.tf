@@ -45,9 +45,17 @@ resource "google_compute_instance" "default" {
   #!/bin/bash
   apt-get update
   apt-get install -y nginx
-  rm -rf /var/www/html/*
-  cd /home/HW_14
-  cp index.html /var/www/html/index.html
+ cat <<EOF > /var/www/html/index.html
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Hello. GC Instance for Terraform</title>
+ </head>
+ <body>
+ <p>Terraform and Google Cloud</p>
+ </body>
+ </html>
+ EOF
   systemctl enable nginx
   systemctl restart nginx
   EOT
