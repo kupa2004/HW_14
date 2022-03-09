@@ -45,7 +45,7 @@ resource "google_compute_instance" "default" {
   #!/bin/bash
   apt-get update
   apt-get install -y nginx
-  cp index.html /var/www/html/index.html
+  cp /home/HW_14/index.html /var/www/html/index.html
   EOT
     }
 }
