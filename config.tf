@@ -46,6 +46,8 @@ resource "google_compute_instance" "default" {
   apt-get update
   apt-get install -y nginx
   cp /home/HW_14/index.html /var/www/html/index.html
+  systemctl enable nginx
+  systemctl restart nginx
   EOT
     }
 }
