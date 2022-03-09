@@ -11,7 +11,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  credentials = file("cred-gcp.json")
+  credentials = file("cred.json")
   project = "solar-semiotics-343520"
   region  = "us-west1"
   zone    = "us-west1-b"
