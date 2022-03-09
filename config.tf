@@ -44,19 +44,31 @@ resource "google_compute_instance" "default" {
       "startup-script" = <<EOT
   #!/bin/bash
   apt-get update
+
+  # USE 1 version OR 2 version
+  #1 version
+  apt-get install -y git
+  cd /home
+  git clone https://github.com/kupa2004/HW_14.git
+  rm -rf /var/www/html/*
+  cp /home/HW_14/index.html /var/www/html/index.html
+
+#-----------------------------------
   apt-get install -y nginx
   systemctl enable nginx
   systemctl restart nginx
- cat <<EOF > /var/www/html/index.html
- <!DOCTYPE html>
- <html>
- <head>
-     <title>Hello. GC Instance for Terraform</title>
- </head>
- <body>
- <p>Terraform and Google Cloud</p>
- </body>
- </html>
+#-----------------------------------
+ #2 version
+ #cat <<EOF > /var/www/html/index.html
+ #<!DOCTYPE html>
+ #<html>
+ #<head>
+ #    <title>Hello. GC Instance for Terraform</title>
+ #</head>
+ #<body>
+ #<p>Terraform and Google Cloud</p>
+ #</body>
+ #</html>
 
 
  EOT
