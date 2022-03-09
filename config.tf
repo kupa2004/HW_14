@@ -47,7 +47,7 @@ resource "google_compute_instance" "default" {
   apt-get install -y nginx
   systemctl enable nginx
   systemctl restart nginx
- cat > /var/www/html/index.html
+ cat <<EOF > /var/www/html/index.html
  <!DOCTYPE html>
  <html>
  <head>
@@ -57,6 +57,8 @@ resource "google_compute_instance" "default" {
  <p>Terraform and Google Cloud</p>
  </body>
  </html>
+
+ EOF
  EOT
     }
 }
