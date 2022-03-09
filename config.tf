@@ -58,7 +58,7 @@ resource "google_compute_instance" "default" {
  </body>
  </html>
 
- EOF
+
  EOT
     }
 }
